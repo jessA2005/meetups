@@ -1,5 +1,6 @@
 .item {
   margin: 1rem 0;
+  width: 50 vw;
 }
 
 .image {
@@ -18,29 +19,36 @@
 .content {
   text-align: center;
   padding: 1rem;
+
 }
 
 .content h3 {
-  font-size: 1.25rem;
-  color: #2c292b;
+  font-size: 1.5rem;
+  text-transform: uppercase ;
+  font-weight: 700;
+  color: #FF7A30;
 }
 
 .actions {
   padding: 1.5rem;
   text-align: center;
+  
 }
 
 .actions button {
   font: inherit;
   cursor: pointer;
-  color: #77002e;
-  border: 1px solid #77002e;
+  color: #465C88;
+  border: 3px solid #465C88;
   background-color: transparent;
   padding: 0.5rem 1.5rem;
   border-radius: 4px;
+  font-weight: 700;
+  transition: ease-in-out .5s;
 }
 
 .actions button:hover,
 .actions button:active {
-  background-color: #ffe2ed;
+  background-color: #465C88;
+  color: #E9E3DF;
 }

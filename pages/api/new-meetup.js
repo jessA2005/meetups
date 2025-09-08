@@ -5,18 +5,22 @@ import { MongoClient } from "mongodb";
 async function handler(req, res) {
     if (req.method === 'POST') {
         const data = req.body;
-    
-    const client = await MongoClient.connect('mongodb+srv://user0:JgWgUdhNKxkCX1GR@cluster0.fqgnv9z.mongodb.net/meetups?retryWrites=true&w=majority')
+        
+    try
+    {
+        const client = await MongoClient.connect(process.env.DB_PASS)
     const db = client.db()
-    //access database
+    
 
     const meetupsCollection = db.collection('meetups')
-    const result = await meetupsCollection.insertOne({data})
+    const result = await meetupsCollection.insertOne(data)
+    // console.log(result);
+
     //inserts one new document to collection
         client.close()
 
         res.status(201).json({message: 'meetup inserted'})
-
+} catch {console.log('error occured in new-meetup')}
     }
 }
 export default handler

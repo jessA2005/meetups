@@ -3,8 +3,13 @@ import classes from './MeetupItem.module.css';
 import { useRouter } from 'next/router';
 function MeetupItem(props) {
   const router = useRouter()
+
   function showDetailsHandler() {
-    router.push('/' + props.id)
+
+console.log(props._id)
+router.push('/'+props._id)
+
+    
     //navigate to programatically
   }
   return (
@@ -15,7 +20,7 @@ function MeetupItem(props) {
         </div>
         <div className={classes.content}>
           <h3>{props.title}</h3>
-          <address>{props.address}</address>
+          <address className='font-bold not-italic text-[#465C88] text-xl'>{props.address}</address>
         </div>
         <div className={classes.actions}>
           <button onClick={showDetailsHandler}>Show Details</button>

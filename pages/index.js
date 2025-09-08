@@ -24,14 +24,14 @@ const HomePage = (props) => {
 //         props: {
 //             meetups: DUMMY_MEETUPS
 //         }
-//     }
+//     }+
 // }
 //always runs on server after deployment,, not run during build process
 
 //static generation => pre renders as soon as built for production
 
 export async function getStaticProps() {
-    const client = await MongoClient.connect('mongodb+srv://user0:JgWgUdhNKxkCX1GR@cluster0.fqgnv9z.mongodb.net/meetups?retryWrites=true&w=majority')
+    const client = await MongoClient.connect(process.env.DB_PASS)
     const db = client.db()
     //access database
 
@@ -49,12 +49,15 @@ export async function getStaticProps() {
     //fetch data from api
     return {
         props: {
-            meetups: meetups.map(meetup => ({
-                title: meetup.data.title,
-                address: meetup.data.address,
-                image: meetup.data.image,
-                id: meetup._id.toString()
-            }))
+            meetups: meetups.map(meetup => {
+                return {
+                title: meetup.title,
+                address: meetup.address,
+                image: meetup.image,
+                _id: meetup._id.toString(),
+                description: meetup.description
+                }
+            })
         },
         //set up as props for page content
         revalidate: 34000
