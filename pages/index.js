@@ -30,7 +30,7 @@ const HomePage = (props) => {
 
 //static generation => pre renders as soon as built for production
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
     const client = await MongoClient.connect(process.env.DB_PASS)
     const db = client.db()
     //access database
