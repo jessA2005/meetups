@@ -1,6 +1,11 @@
 .item {
   margin: 1rem 0;
   width: 50 vw;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 1rem;
+
 }
 
 .image {
@@ -13,6 +18,7 @@
 
 .image img {
   width: 100%;
+  height:100%;
   object-fit: cover;
 }
 
