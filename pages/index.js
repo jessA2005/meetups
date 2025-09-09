@@ -58,9 +58,9 @@ export async function getServerSideProps() {
                 description: meetup.description
                 }
             })
-        },
+        }
         //set up as props for page content
-        revalidate: 34000
+
         //no of seconds next.js will wait until it regenerates this page for an upcoming request
     }
 

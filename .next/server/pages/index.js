@@ -74,7 +74,7 @@ __webpack_require__.r(__webpack_exports__);
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, {
   "default": () => (/* binding */ pages),
-  "getStaticProps": () => (/* binding */ getStaticProps)
+  "getServerSideProps": () => (/* binding */ getServerSideProps)
 });
 
 // EXTERNAL MODULE: external "react/jsx-runtime"
@@ -197,7 +197,7 @@ const HomePage = (props)=>{
 // }
 //always runs on server after deployment,, not run during build process
 //static generation => pre renders as soon as built for production
-async function getStaticProps() {
+async function getServerSideProps() {
     const client = await external_mongodb_.MongoClient.connect(process.env.DB_PASS);
     const db = client.db();
     //access database
@@ -218,9 +218,7 @@ async function getStaticProps() {
                     description: meetup.description
                 };
             })
-        },
-        //set up as props for page content
-        revalidate: 34000
+        }
     };
 }
 //fixed name in page folder
